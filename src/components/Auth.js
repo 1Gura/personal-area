@@ -12,12 +12,7 @@ const Auth = (props) => {
       password: value.password
     }).then(res => {
       props.selectToken(res.data.access_token);
-      axios.post('http://127.0.0.1:8000/api/auth/me', {}, {'authorization': `Bearer ${localStorage.getItem('token')}`}).then(res=>{
-        debugger
-        console.log(res)
-      })
     })
-
   }
   return (
     <div>
@@ -49,11 +44,6 @@ const Auth = (props) => {
 };
 
 export default Auth;
-
-
-
-
-
 
 
 // let req = await fetch('http://127.0.0.1:8000/api/auth/login', {

@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #FBFBFB;
+}
+
+
+a {
+    text-decoration: none;
+}

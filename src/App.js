@@ -12,11 +12,25 @@ import {useEffect, useState} from "react";
 
 function App() {
   const [apiToken, setToken] = useState('');
-  const [user,setUser] = useState();
+  const [user, setUser] = useState();
+  const [config, setConfig] = useState({
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('apiToken')
+    }
+  });
+
+  const selectConfig = () => {
+    setConfig({
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('apiToken')
+      }
+    });
+  }
+
   const selectToken = (token) => {
-    debugger
     setToken(token);
     localStorage.setItem('apiToken', token);
+    selectConfig();
   }
 
   const checkedTicket = () => {
@@ -37,7 +51,7 @@ function App() {
         <div className='container'>
           <Routes>
             <Route path="/" element={<Main/>}/>
-            <Route path="/desks" element={<Desks token={apiToken}/>}/>
+            <Route path="/desks" element={<Desks token={apiToken} config={config}/>}/>
             <Route path="/desks-list" element={<DesksList/>}/>
             <Route path="/cards" element={<Cards/>}/>
             <Route path="/tasks" element={<Tasks/>}/>
