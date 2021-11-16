@@ -1,24 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
 
+import Desks from "./components/Desks/Desks";
+import Navbar from "./components/Navbar";
+import {Route, BrowserRouter, Routes} from "react-router-dom";
+import DesksList from "./components/DesksList";
+import Main from "./components/Main";
+import Cards from "./components/Cards";
+import Tasks from "./components/Tasks";
+import Auth from "./components/Auth";
+import {useEffect, useState} from "react";
+
 function App() {
+  const [apiToken, setToken] = useState('');
+  const [user,setUser] = useState();
+  const selectToken = (token) => {
+    debugger
+    setToken(token);
+    localStorage.setItem('apiToken', token);
+  }
+
+  const checkedTicket = () => {
+    const token = localStorage.getItem('apiToken');
+    if (token && token !== 'null') {
+      selectToken(token);
+    }
+  }
+
+  useEffect(() => {
+    checkedTicket();
+  }, [apiToken])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <Navbar token={apiToken}/>
+        <div className='container'>
+          <Routes>
+            <Route path="/" element={<Main/>}/>
+            <Route path="/desks" element={<Desks token={apiToken}/>}/>
+            <Route path="/desks-list" element={<DesksList/>}/>
+            <Route path="/cards" element={<Cards/>}/>
+            <Route path="/tasks" element={<Tasks/>}/>
+            <Route path="/auth" element={<Auth token={apiToken} selectToken={selectToken}/>}/>
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
