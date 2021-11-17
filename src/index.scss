@@ -1,8 +1,46 @@
 @import "nullable.css";
 
 .desks-container {
+  >div {
+    width: 400px;
+  }
   display: flex;
   justify-content: space-around;
   &__desks {
   }
+}
+
+
+//Модальное окно
+
+div .container-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+div .modal-window {
+  top: 0;
+  left: 0;
+  background-color: #383D44;
+  opacity: 0.8;
+  //z-index: 100;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal-window__form {
+  width: 600px;
+  height: 200px;
+  background-color: #F0F0F0;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

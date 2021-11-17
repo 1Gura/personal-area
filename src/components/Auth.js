@@ -4,7 +4,7 @@ import Button from "./UI/Button";
 import axios from "axios";
 
 const Auth = (props) => {
-  const [value, setValue] = useState({email: '', password: ''});
+  const [value, setValue] = useState({email: 'gura@gmail.com', password: 'ilya123'});
   const sendData = async (e) => {
     e.preventDefault();
     axios.post(`http://127.0.0.1:8000/api/auth/login`, {

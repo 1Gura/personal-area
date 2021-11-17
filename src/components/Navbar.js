@@ -17,7 +17,6 @@ function Navbar(props) {
           <li><NavLink to="/cards">Cards</NavLink></li>
           <li><NavLink to="/tasks">Tasks</NavLink></li>
           <li><NavLink to="/auth">Auth</NavLink></li>
-
         </ul>
       </nav>
     </header>
